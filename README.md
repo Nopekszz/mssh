@@ -2,7 +2,7 @@
 
 Minimal rendezvous service for reaching SSH behind NAT
 
-This enables SSH access to machines behind NAT/firewalls using a simple rendezvous server. No complex VPN setup required.
+This enables SSH access to machines behind NAT/firewalls using a simple rendezvous server. No complex VPN setup required, works with your `ssh` command out of the box.
 
 ![mssh diagram](docs/mssh.png)
 
