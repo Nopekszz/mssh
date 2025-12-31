@@ -15,7 +15,7 @@ Deploy the server on a publicly reachable machine, run the agent on each host be
 |---------|---------|
 | `mssh server` | Runs the rendezvous service on a public host |
 | `mssh agent <node-id>` | Keeps a connection open from a NATed host back to the server |
-| `mssh proxy <node-id>` / `mssh user@node` | Lets you connect from your workstation |
+| `mssh proxy <node-id>` / `mssh user@node` | Lets you connect from your machines |
 
 ### Server
 
