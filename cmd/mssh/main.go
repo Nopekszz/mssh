@@ -64,24 +64,24 @@ func main() {
 		args = append([]string{"ssh"}, args...)
 	}
 
-	cfg := loadConfig()
-
 	switch kingpin.MustParse(app.Parse(args)) {
 	case serverCmd.FullCommand():
 		runServer(*serverHost, *serverPort)
 	case agentCmd.FullCommand():
-		serverAddr, err := resolveServer(*agentServer, cfg, *agentNodeID)
-		if err != nil {
-			log.Fatalf("[agent] %v", err)
+		serverAddr := *agentServer
+		if serverAddr == "" {
+			serverAddr = defaultServerAddr
 		}
 		runAgent(*agentNodeID, serverAddr, *agentSSHPort)
 	case proxyCmd.FullCommand():
-		serverAddr, err := resolveServer(*proxyServer, cfg, *proxyNodeID)
-		if err != nil {
-			log.Fatalf("[proxy] %v", err)
+		serverAddr := *proxyServer
+		if serverAddr == "" {
+			log.Fatalf("[proxy] --server is required")
 		}
 		runProxy(*proxyNodeID, serverAddr)
+
 	case sshCmd.FullCommand():
+		cfg := loadConfig()
 		user, node, err := parseTarget(*sshTarget)
 		if err != nil {
 			log.Fatalf("[ssh] %v", err)
@@ -95,11 +95,13 @@ func main() {
 			log.Fatalf("[ssh] %v", err)
 		}
 	case configInitCmd.FullCommand():
+		cfg := loadConfig()
 		if err := runConfigInit(cfg); err != nil {
 			log.Fatalf("[config] %v", err)
 		}
 		return
 	}
+
 }
 
 func needsImplicitSSH(args []string) bool {
@@ -261,7 +263,8 @@ func loadConfig() config.Config {
 		if errors.Is(err, config.ErrNotFound) {
 			return config.Config{}
 		}
-		log.Fatalf("[config] failed to load config: %v", err)
+		log.Printf("[config] warning: %v (continuing with defaults)", err)
+		return config.Config{}
 	}
 	return cfg
 }
@@ -273,7 +276,7 @@ func resolveServer(flagValue string, cfg config.Config, nodeID string) (string, 
 	if server := cfg.ServerFor(nodeID); server != "" {
 		return server, nil
 	}
-	return defaultServerAddr, nil
+	return "", fmt.Errorf("no server configured; run 'mssh config init' or pass --server")
 }
 
 func resolveIdentity(flagValue string, cfg config.Config, nodeID string) string {

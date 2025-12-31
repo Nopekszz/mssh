@@ -44,6 +44,14 @@ Notes:
 - When you run `... | bash -s -- agent` without additional flags, the script prompts for the rendezvous server, node-id, and extra flags, then renders the unit via `envsubst`
 - The script downloads the release tarball (`mssh-linux-$ARCH`), installs it to `$BIN_DIR` (default `/usr/local/bin`), writes a systemd unit, runs `sudo systemctl daemon-reload && sudo systemctl enable --now ...`, and reloads systemd automatically
 
+### Uninstall
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/eznix86/mssh/main/install/uninstall.sh | sudo bash
+```
+
+This removes `/usr/local/bin/mssh` (or `$BIN_DIR/mssh`) and disables + deletes `mssh-server` / `mssh-agent` systemd units if present.
+
 ### Manual build
 
 ```bash
